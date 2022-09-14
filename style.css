@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.callendar__wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  border: 2px solid rgba(49, 49, 49, 0.2);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+}
+.callendar__nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.callendar__prev-month, .callendar__mont, .callendar__year, .callendar__next-month {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.callendar__year {
+  color: rgb(204, 40, 40);
+}
+.callendar__next-svg, .callendar__prev-svg {
+  width: 20px;
+  height: 20px;
+}
+.callendar__next-svg:hover, .callendar__prev-svg:hover {
+  fill: rgb(13, 69, 190);
+}
+.callendar__prev-svg {
+  transform: rotate(180deg);
+}
+.callendar__weeks {
+  padding-top: 15px;
+  display: flex;
+  list-style: none;
+  font-size: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+.callendar__days {
+  padding-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  list-style: none;
+  justify-items: center;
+  height: 100%;
+}
+.callendar__day {
+  width: 1.88rem;
+  height: 1.88rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+}
+.callendar__day:hover {
+  border-radius: 7px;
+  background-color: rgba(198, 196, 196, 0.388);
+}
+.callendar__today {
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: transparent;
+  color: rgba(0, 0, 255, 0.47);
+  font-size: 1.2rem;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  padding: 15px 0;
+  border-color: rgba(49, 49, 49, 0.2);
+}
+
+.arrowLeft,
+.arrowRight {
+  width: 20px;
+  height: 20px;
+  background-image: url("https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-forward-icon-png-image_925823.jpg");
+  background-size: 20px 20px;
+  background-color: transparent;
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+}/*# sourceMappingURL=style.css.map */
