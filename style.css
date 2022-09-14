@@ -36,6 +36,10 @@
 .callendar__prev-svg {
   transform: rotate(180deg);
 }
+.callendar__day-today {
+  background-color: rgba(52, 108, 176, 0.649);
+  border-radius: 10px;
+}
 .callendar__weeks {
   padding-top: 15px;
   display: flex;

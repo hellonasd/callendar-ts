@@ -59,6 +59,9 @@ class HTMLManagerCallendar {
         }
         for (let v of d.totalDays) {
             const li = document.createElement("li");
+            if (v === d.currentDate.getDate()) {
+                li.classList.add("callendar__day-today");
+            }
             li.classList.add("callendar__day");
             li.innerText = v.toString();
             ul.append(li);
@@ -98,7 +101,7 @@ class HTMLManagerCallendar {
         this.wrapper.appendChild(days);
         this.wrapper.appendChild(btnToday);
         main.append(this.wrapper);
-        return { btnPrev, btnNext };
+        return { btnPrev, btnNext, btnToday };
     }
 }
 class Callendar extends HTMLManagerCallendar {
@@ -120,7 +123,6 @@ class Callendar extends HTMLManagerCallendar {
         this.count = 0;
         this.totalDaysInMonth = 42;
         this.d = this.initData(date, locale);
-        console.log(this.d);
         this.weeks = this.getWeeks(date, locale);
         this.monthNames = this.getMonths(date, locale);
         this.handlerEvents();
@@ -213,9 +215,10 @@ class Callendar extends HTMLManagerCallendar {
     nextMonth() { }
     handlerEvents() {
         window.addEventListener("DOMContentLoaded", () => {
-            const { btnPrev, btnNext } = this.HTMLInit(this.callendar, this.d, this.weeks, this.monthNames);
+            const { btnPrev, btnNext, btnToday } = this.HTMLInit(this.callendar, this.d, this.weeks, this.monthNames);
             btnPrev.addEventListener("click", () => this.setPrevMonth());
             btnNext.addEventListener("click", () => this.setNextMonth());
+            btnToday.addEventListener("click", () => this.goBackInToPresentDay());
         });
     }
     setNextMonth() {
@@ -231,6 +234,10 @@ class Callendar extends HTMLManagerCallendar {
         const date = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
         let x = this.initData(date, "default");
         this.HTMLcreateDays(x, this.monthNames);
+    }
+    goBackInToPresentDay() {
+        this.d.currentDate = new Date();
+        this.HTMLcreateDays(this.d, this.monthNames);
     }
 }
 const callendar = new Callendar({
